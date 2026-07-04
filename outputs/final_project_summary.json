@@ -2,13 +2,18 @@
   "project_title": "Real-Time Customer Support Intelligence Platform",
   "dataset": "suraj520/customer-support-ticket-dataset",
   "environment": "Local JupyterLab on Windows",
+  "runtime_configuration": {
+    "use_full_data": true,
+    "run_limit": "ALL",
+    "total_dataset_records": 8469
+  },
   "deliverables": {
     "Deliverable 1": {
       "name": "Ingestion Layer",
       "status": "completed",
       "components": [
-        "Mock Kafka producer",
-        "Mock Kafka consumer",
+        "In-memory Kafka-style producer",
+        "In-memory Kafka-style consumer",
         "Pydantic schema validation",
         "Valid and invalid JSONL event outputs"
       ],
@@ -18,14 +23,14 @@
       ]
     },
     "Deliverable 2": {
-      "name": "Delta Lakehouse Simulation",
+      "name": "Lakehouse Layer",
       "status": "completed",
       "components": [
         "Bronze zone",
         "Silver zone",
         "Gold zone",
         "Schema enforcement",
-        "MERGE / UPSERT simulation"
+        "MERGE / UPSERT logic"
       ],
       "outputs": [
         "C:\\Users\\alamr\\OneDrive\\Course\\MDE for AI Systems\\Capstone_Project\\outputs\\bronze\\support_tickets_bronze.parquet",

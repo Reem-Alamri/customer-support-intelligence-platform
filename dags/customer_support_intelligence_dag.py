@@ -2,9 +2,8 @@
 """
 Reference Airflow DAG for the Customer Support Intelligence Platform.
 
-This file shows how the pipeline would be orchestrated in Apache Airflow.
-In this capstone, the actual execution is simulated inside the Jupyter notebook
-using AirflowStyleDAG to keep the project lightweight and runnable locally.
+This file shows how the pipeline tasks can be represented as an Apache Airflow DAG.
+The notebook execution uses the local AirflowStyleDAG runner above.
 """
 
 from datetime import datetime

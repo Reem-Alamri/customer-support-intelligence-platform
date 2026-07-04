@@ -10,11 +10,11 @@
   "critical_failures": 0,
   "warning_failures": 0,
   "data_profile": {
-    "silver_records": 51,
-    "gold_records": 20,
-    "silver_missing_resolution_records": 31,
-    "gold_documents_available": 20,
-    "unique_ticket_ids": 51
+    "silver_records": 8470,
+    "gold_records": 2771,
+    "silver_missing_resolution_records": 5699,
+    "gold_documents_available": 2771,
+    "unique_ticket_ids": 8470
   },
   "results": [
     {
@@ -25,7 +25,7 @@
         "column": "ticket_id",
         "exists": true
       },
-      "checked_at": "2026-07-04T10:40:03.327331+00:00"
+      "checked_at": "2026-07-04T12:14:00.734397+00:00"
     },
     {
       "expectation_type": "expect_column_values_to_not_be_null",
@@ -35,7 +35,7 @@
         "column": "ticket_id",
         "null_count": 0
       },
-      "checked_at": "2026-07-04T10:40:03.327816+00:00"
+      "checked_at": "2026-07-04T12:14:00.735493+00:00"
     },
     {
       "expectation_type": "expect_column_values_to_be_unique",
@@ -45,7 +45,7 @@
         "column": "ticket_id",
         "duplicate_count": 0
       },
-      "checked_at": "2026-07-04T10:40:03.328031+00:00"
+      "checked_at": "2026-07-04T12:14:00.736587+00:00"
     },
     {
       "expectation_type": "expect_column_values_to_not_be_empty",
@@ -55,7 +55,7 @@
         "column": "ticket_subject",
         "empty_count": 0
       },
-      "checked_at": "2026-07-04T10:40:03.328716+00:00"
+      "checked_at": "2026-07-04T12:14:00.748453+00:00"
     },
     {
       "expectation_type": "expect_column_values_to_not_be_empty",
@@ -65,7 +65,7 @@
         "column": "ticket_description",
         "empty_count": 0
       },
-      "checked_at": "2026-07-04T10:40:03.329220+00:00"
+      "checked_at": "2026-07-04T12:14:00.767019+00:00"
     },
     {
       "expectation_type": "expect_column_values_to_be_in_set",
@@ -82,7 +82,7 @@
         ],
         "invalid_count": 0
       },
-      "checked_at": "2026-07-04T10:40:03.329503+00:00"
+      "checked_at": "2026-07-04T12:14:00.768077+00:00"
     },
     {
       "expectation_type": "expect_column_values_to_be_in_set",
@@ -99,7 +99,7 @@
         ],
         "invalid_count": 0
       },
-      "checked_at": "2026-07-04T10:40:03.329701+00:00"
+      "checked_at": "2026-07-04T12:14:00.768905+00:00"
     },
     {
       "expectation_type": "expect_gold_documents_to_have_content",
@@ -107,10 +107,10 @@
       "passed": true,
       "details": {
         "column": "knowledge_document",
-        "gold_records": 20,
+        "gold_records": 2771,
         "empty_documents": 0
       },
-      "checked_at": "2026-07-04T10:40:03.330288+00:00"
+      "checked_at": "2026-07-04T12:14:00.777026+00:00"
     },
     {
       "expectation_type": "expect_gold_layer_to_exclude_pii_columns",
@@ -123,8 +123,8 @@
         ],
         "found_pii_columns": []
       },
-      "checked_at": "2026-07-04T10:40:03.330316+00:00"
+      "checked_at": "2026-07-04T12:14:00.777079+00:00"
     }
   ],
-  "generated_at": "2026-07-04T10:40:03.331168+00:00"
+  "generated_at": "2026-07-04T12:14:00.790577+00:00"
 }
