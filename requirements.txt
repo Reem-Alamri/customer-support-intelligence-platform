@@ -1,0 +1,10 @@
+pandas
+numpy
+pyarrow
+pydantic
+loguru
+kagglehub
+sentence-transformers
+scikit-learn
+rank-bm25
+chromadb
