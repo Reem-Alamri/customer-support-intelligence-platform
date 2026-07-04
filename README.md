@@ -2,164 +2,55 @@
 
 ## Project Overview
 
-This capstone project implements a real-time customer support intelligence platform for modern data engineering and AI systems.
+This project is a capstone submission for SDAIA Academy's **Modern Data Engineering for AI Systems** course.
 
-The platform ingests customer support tickets, validates their schema, stores them in a lakehouse-style architecture, builds a RAG pipeline over the curated knowledge base, orchestrates the workflow using an Airflow-style DAG, and emits quality and lineage reports.
+It implements a customer support intelligence pipeline that ingests support tickets, stores them in curated lakehouse layers, builds a retrieval pipeline over resolved cases, orchestrates the workflow, and produces quality and lineage artifacts.
 
 ## Dataset
 
-The project uses the Kaggle Customer Support Ticket Dataset:
+Kaggle dataset:
 
 `suraj520/customer-support-ticket-dataset`
 
-PII columns such as customer name and customer email are excluded from the Gold knowledge base and RAG pipeline.
+Records used in this run: `8469`
 
----
+The Gold knowledge base and RAG pipeline exclude customer name and customer email columns.
 
-## Architecture
+## Pipeline Results
 
-The project pipeline includes five main layers:
+| Deliverable | Result |
+|---|---|
+| 1. Ingestion | Produced `8469` events, with `8469` valid and `0` invalid records |
+| 2. Lakehouse | Bronze `8469`, Silver before MERGE `8469`, Silver after MERGE `8470`, Gold after MERGE `2771` |
+| 3. RAG | Built `4829` chunks from `2771` Gold documents using `all-MiniLM-L6-v2` |
+| 4. Orchestration | DAG status `success` with `3` completed tasks |
+| 5. Quality & Lineage | Quality gate `True`, `9/9` expectations passed, `10` lineage events emitted |
 
-1. Ingestion Layer
-2. Delta Lakehouse Simulation
-3. RAG Pipeline
-4. Orchestration Layer
-5. Quality and Lineage Layer
+## Implementation Details
 
----
+- Ingestion is implemented with an in-memory Kafka-style producer and consumer.
+- Schema validation is implemented using Pydantic.
+- The lakehouse layer is implemented with Parquet-backed Bronze, Silver, and Gold zones.
+- MERGE/UPSERT logic updates matching ticket IDs and inserts new ticket IDs.
+- RAG uses chunking, SentenceTransformer embeddings, vector search, BM25, Reciprocal Rank Fusion, and cross-encoder reranking.
+- Orchestration is implemented with a DAG-style runner, with a reference Airflow DAG generated in `dags/`.
+- Quality checks are implemented with a Great Expectations-style suite.
+- Lineage is emitted as OpenLineage-style JSONL events.
 
-## Deliverable 1 — Ingestion Layer
+## Main Outputs
 
-Components:
-
-- Mock Kafka producer
-- Mock Kafka consumer
-- Pydantic schema validation
-- Valid and invalid event outputs
-
-Outputs:
-
-- `outputs/ingestion/valid_events.jsonl`
-- `outputs/ingestion/invalid_events.jsonl`
-
-Execution result:
-
-- Produced events: 50
-- Valid events: 50
-- Invalid events: 0
-
----
-
-## Deliverable 2 — Delta Lakehouse Simulation
-
-This deliverable implements a lightweight Delta Lakehouse simulation using Parquet files.
-
-Components:
-
-- Bronze zone
-- Silver zone
-- Gold zone
-- Schema enforcement
-- MERGE / UPSERT simulation
-
-Execution result:
-
-- Bronze records: 50
-- Silver records before merge: 50
-- Silver records after merge: 51
-- Gold documents before merge: 18
-- Gold documents after merge: 20
-- Updated records: 1
-- Inserted records: 1
-- Schema enforcement: passed
-
-Outputs:
-
-- `outputs/bronze/support_tickets_bronze.parquet`
-- `outputs/silver/support_tickets_silver_merged.parquet`
-- `outputs/gold/support_knowledge_base_gold_merged.parquet`
-
----
-
-## Deliverable 3 — RAG Pipeline
-
-Components:
-
-- Chunking
-- SentenceTransformer embeddings
-- Vector search using cosine similarity
-- BM25 keyword search
-- Hybrid search using Reciprocal Rank Fusion
-- Cross-encoder reranking
-
-Execution result:
-
-- Gold documents: 20
-- Chunks created: 36
-- Embedding model: `all-MiniLM-L6-v2`
-- Reranking model: `cross-encoder/ms-marco-MiniLM-L-6-v2`
-
-Test query:
-
-`How can I solve a product setup issue?`
-
-Outputs:
-
-- `outputs/rag/rag_chunks.parquet`
-- `outputs/rag/rag_search_results.json`
-
----
-
-## Deliverable 4 — Orchestration
-
-The DAG connects the main modules end-to-end:
-
-1. Ingestion
-2. Lakehouse storage
-3. RAG pipeline
-
-A reference Airflow DAG file is generated under the `dags/` folder.
-
-Execution result:
-
-- DAG status: success
-- Tasks executed:
-  - task_1_ingestion
-  - task_2_lakehouse_storage
-  - task_3_rag_pipeline
-
-Outputs:
-
-- `outputs/orchestration/dag_run_report.json`
-- `dags/customer_support_intelligence_dag.py`
-
----
-
-## Deliverable 5 — Quality Gate and OpenLineage
-
-Components:
-
-- Great Expectations-style validation suite
-- Quality report
-- Failed quality records output
-- OpenLineage-style JSONL events
-
-Execution result:
-
-- Quality gate passed: True
-- Total expectations: 9
-- Passed expectations: 9
-- Failed expectations: 0
-- OpenLineage events emitted: 10
-
-Outputs:
-
-- `outputs/quality/great_expectations_suite.json`
-- `outputs/quality/quality_report.json`
-- `outputs/quality/failed_quality_records.parquet`
-- `outputs/lineage/openlineage_events.jsonl`
-
----
+| Output | Path |
+|---|---|
+| Valid events | `outputs/ingestion/valid_events.jsonl` |
+| Bronze table | `outputs/bronze/support_tickets_bronze.parquet` |
+| Silver table after MERGE | `outputs/silver/support_tickets_silver_merged.parquet` |
+| Gold knowledge base after MERGE | `outputs/gold/support_knowledge_base_gold_merged.parquet` |
+| RAG chunks | `outputs/rag/rag_chunks.parquet` |
+| RAG search results | `outputs/rag/rag_search_results.json` |
+| DAG report | `outputs/orchestration/dag_run_report.json` |
+| Quality report | `outputs/quality/quality_report.json` |
+| Lineage events | `outputs/lineage/openlineage_events.jsonl` |
+| Reference Airflow DAG | `dags/customer_support_intelligence_dag.py` |
 
 ## How to Run
 
@@ -169,40 +60,22 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Run JupyterLab:
+Start JupyterLab:
 
 ```bash
 jupyter lab
 ```
 
-Then open the notebook and run all cells from top to bottom.
-
----
-
-## Project Notes
-
-This project is designed as a two-day educational capstone.
-
-Simulated components:
-
-- Kafka is simulated using a Python `MockKafka` class.
-- Delta Lake is simulated using Parquet zones with schema enforcement and MERGE-like logic.
-- Airflow is simulated using an Airflow-style DAG runner.
-- Great Expectations is simulated using expectation-style checks.
-- OpenLineage is simulated by emitting JSONL lineage events.
-
-The RAG pipeline uses real embedding, retrieval, hybrid search, and reranking components.
-
----
+Open `capstone_project.ipynb` and run all cells from top to bottom.
 
 ## Repository Structure
 
 ```text
-customer_support_intelligence_platform/
+customer-support-intelligence-platform/
 │
 ├── README.md
 ├── requirements.txt
-├── capstone_project_organized.ipynb
+├── capstone_project.ipynb
 │
 ├── dags/
 │   └── customer_support_intelligence_dag.py
@@ -218,8 +91,6 @@ customer_support_intelligence_platform/
 │   ├── lineage/
 │   └── final_project_summary.json
 ```
-
----
 
 ## Author
 
