@@ -1,0 +1,62 @@
+{
+  "query": "How can I solve a product setup issue?",
+  "retrieval_pipeline": [
+    "vector_search",
+    "bm25_keyword_search",
+    "rrf_hybrid_fusion",
+    "cross_encoder_reranking"
+  ],
+  "top_results": [
+    {
+      "chunk_id": "KB-1_chunk_0",
+      "document_id": "KB-1",
+      "ticket_id": "1",
+      "chunk_index": 0,
+      "chunk_text": "Customer Issue:\nUpdated product setup issue\n\nDetails:\nCustomer provided additional details about the setup issue.\n\nProduct:\nGoPro Hero\n\nRecommended Resolution:\nAgent provided updated setup instructions and confirmed the issue was resolved.",
+      "ticket_type": "Technical issue",
+      "product_purchased": "GoPro Hero",
+      "vector_score": 0.4828002452850342,
+      "vector_rank": 3,
+      "bm25_score": 6.850091704771421,
+      "bm25_rank": 1,
+      "rrf_score": 0.032266458495966696,
+      "hybrid_rank": 1,
+      "rerank_score": 1.4858183860778809,
+      "rerank_rank": 1
+    },
+    {
+      "chunk_id": "KB-15_chunk_0",
+      "document_id": "KB-15",
+      "ticket_id": "15",
+      "chunk_index": 0,
+      "chunk_text": "Customer Issue:\nProduct setup\n\nDetails:\nI'm having an issue with the {product_purchased}. Please assist.\n\nProduct Name: TPUBASK3E3KQ0\n\n\nJoin Date: Oct 2007 Posts: 11,532\n\nQuote: I've recently updated the firmware of my {product_purchased}, and the issue started happening afterward. Could it be related to the update?\n\nProduct:\nSony PlayStation\n\nRecommended Resolution:\nOfficer moment world sing parent available.",
+      "ticket_type": "Billing inquiry",
+      "product_purchased": "Sony PlayStation",
+      "vector_score": 0.48421740531921387,
+      "vector_rank": 2,
+      "bm25_score": 4.036342549814997,
+      "bm25_rank": 2,
+      "rrf_score": 0.03225806451612903,
+      "hybrid_rank": 2,
+      "rerank_score": 0.7192111015319824,
+      "rerank_rank": 2
+    },
+    {
+      "chunk_id": "KB-42_chunk_0",
+      "document_id": "KB-42",
+      "ticket_id": "42",
+      "chunk_index": 0,
+      "chunk_text": "Customer Issue:\nProduct compatibility\n\nDetails:\nI'm facing a problem with my {product_purchased}. The {product_purchased} is not turning on. It was working fine until yesterday, but now it doesn't respond.\n\nIf I'd just switched to a The issue I'm facing is intermittent. Sometimes it works fine, but other times it acts up unexpectedly.\n\nProduct:\nDell XPS\n\nRecommended Resolution:\nStart book field officer seem make.",
+      "ticket_type": "Billing inquiry",
+      "product_purchased": "Dell XPS",
+      "vector_score": 0.49905115365982056,
+      "vector_rank": 1,
+      "rrf_score": 0.01639344262295082,
+      "hybrid_rank": 4,
+      "rerank_score": -4.182295799255371,
+      "rerank_rank": 3
+    }
+  ],
+  "answer_context": "Customer Issue:\nUpdated product setup issue\n\nDetails:\nCustomer provided additional details about the setup issue.\n\nProduct:\nGoPro Hero\n\nRecommended Resolution:\nAgent provided updated setup instructions and confirmed the issue was resolved.\n\n---\n\nCustomer Issue:\nProduct setup\n\nDetails:\nI'm having an issue with the {product_purchased}. Please assist.\n\nProduct Name: TPUBASK3E3KQ0\n\n\nJoin Date: Oct 2007 Posts: 11,532\n\nQuote: I've recently updated the firmware of my {product_purchased}, and the issue started happening afterward. Could it be related to the update?\n\nProduct:\nSony PlayStation\n\nRecommended Resolution:\nOfficer moment world sing parent available.\n\n---\n\nCustomer Issue:\nProduct compatibility\n\nDetails:\nI'm facing a problem with my {product_purchased}. The {product_purchased} is not turning on. It was working fine until yesterday, but now it doesn't respond.\n\nIf I'd just switched to a The issue I'm facing is intermittent. Sometimes it works fine, but other times it acts up unexpectedly.\n\nProduct:\nDell XPS\n\nRecommended Resolution:\nStart book field officer seem make.",
+  "generated_at": "2026-07-04T10:40:03.218508+00:00"
+}

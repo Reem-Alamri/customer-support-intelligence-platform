@@ -1,0 +1,130 @@
+{
+  "deliverable": "Deliverable 5",
+  "module": "Quality Gate",
+  "suite_name": "customer_support_quality_suite",
+  "framework": "Great Expectations-style validation suite",
+  "quality_gate_passed": true,
+  "total_expectations": 9,
+  "passed_expectations": 9,
+  "failed_expectations": 0,
+  "critical_failures": 0,
+  "warning_failures": 0,
+  "data_profile": {
+    "silver_records": 51,
+    "gold_records": 20,
+    "silver_missing_resolution_records": 31,
+    "gold_documents_available": 20,
+    "unique_ticket_ids": 51
+  },
+  "results": [
+    {
+      "expectation_type": "expect_column_to_exist",
+      "severity": "critical",
+      "passed": true,
+      "details": {
+        "column": "ticket_id",
+        "exists": true
+      },
+      "checked_at": "2026-07-04T10:40:03.327331+00:00"
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "severity": "critical",
+      "passed": true,
+      "details": {
+        "column": "ticket_id",
+        "null_count": 0
+      },
+      "checked_at": "2026-07-04T10:40:03.327816+00:00"
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_unique",
+      "severity": "critical",
+      "passed": true,
+      "details": {
+        "column": "ticket_id",
+        "duplicate_count": 0
+      },
+      "checked_at": "2026-07-04T10:40:03.328031+00:00"
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_empty",
+      "severity": "critical",
+      "passed": true,
+      "details": {
+        "column": "ticket_subject",
+        "empty_count": 0
+      },
+      "checked_at": "2026-07-04T10:40:03.328716+00:00"
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_empty",
+      "severity": "critical",
+      "passed": true,
+      "details": {
+        "column": "ticket_description",
+        "empty_count": 0
+      },
+      "checked_at": "2026-07-04T10:40:03.329220+00:00"
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "severity": "warning",
+      "passed": true,
+      "details": {
+        "column": "priority_standardized",
+        "allowed_values": [
+          "critical",
+          "high",
+          "low",
+          "medium",
+          "unknown"
+        ],
+        "invalid_count": 0
+      },
+      "checked_at": "2026-07-04T10:40:03.329503+00:00"
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "severity": "warning",
+      "passed": true,
+      "details": {
+        "column": "channel_standardized",
+        "allowed_values": [
+          "chat",
+          "email",
+          "other",
+          "phone",
+          "social_media"
+        ],
+        "invalid_count": 0
+      },
+      "checked_at": "2026-07-04T10:40:03.329701+00:00"
+    },
+    {
+      "expectation_type": "expect_gold_documents_to_have_content",
+      "severity": "critical",
+      "passed": true,
+      "details": {
+        "column": "knowledge_document",
+        "gold_records": 20,
+        "empty_documents": 0
+      },
+      "checked_at": "2026-07-04T10:40:03.330288+00:00"
+    },
+    {
+      "expectation_type": "expect_gold_layer_to_exclude_pii_columns",
+      "severity": "critical",
+      "passed": true,
+      "details": {
+        "columns_not_allowed": [
+          "customer_name",
+          "customer_email"
+        ],
+        "found_pii_columns": []
+      },
+      "checked_at": "2026-07-04T10:40:03.330316+00:00"
+    }
+  ],
+  "generated_at": "2026-07-04T10:40:03.331168+00:00"
+}

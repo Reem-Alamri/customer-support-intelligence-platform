@@ -1,0 +1,88 @@
+{
+  "project_title": "Real-Time Customer Support Intelligence Platform",
+  "dataset": "suraj520/customer-support-ticket-dataset",
+  "environment": "Local JupyterLab on Windows",
+  "deliverables": {
+    "Deliverable 1": {
+      "name": "Ingestion Layer",
+      "status": "completed",
+      "components": [
+        "Mock Kafka producer",
+        "Mock Kafka consumer",
+        "Pydantic schema validation",
+        "Valid and invalid JSONL event outputs"
+      ],
+      "outputs": [
+        "C:\\Users\\alamr\\OneDrive\\Course\\MDE for AI Systems\\Capstone_Project\\outputs\\ingestion\\valid_events.jsonl",
+        "C:\\Users\\alamr\\OneDrive\\Course\\MDE for AI Systems\\Capstone_Project\\outputs\\ingestion\\invalid_events.jsonl"
+      ]
+    },
+    "Deliverable 2": {
+      "name": "Delta Lakehouse Simulation",
+      "status": "completed",
+      "components": [
+        "Bronze zone",
+        "Silver zone",
+        "Gold zone",
+        "Schema enforcement",
+        "MERGE / UPSERT simulation"
+      ],
+      "outputs": [
+        "C:\\Users\\alamr\\OneDrive\\Course\\MDE for AI Systems\\Capstone_Project\\outputs\\bronze\\support_tickets_bronze.parquet",
+        "C:\\Users\\alamr\\OneDrive\\Course\\MDE for AI Systems\\Capstone_Project\\outputs\\silver\\support_tickets_silver_merged.parquet",
+        "C:\\Users\\alamr\\OneDrive\\Course\\MDE for AI Systems\\Capstone_Project\\outputs\\gold\\support_knowledge_base_gold_merged.parquet"
+      ]
+    },
+    "Deliverable 3": {
+      "name": "RAG Pipeline",
+      "status": "completed",
+      "components": [
+        "Chunking",
+        "SentenceTransformer embeddings",
+        "Vector search",
+        "BM25 keyword search",
+        "Hybrid search with RRF",
+        "Cross-encoder reranking"
+      ],
+      "outputs": [
+        "C:\\Users\\alamr\\OneDrive\\Course\\MDE for AI Systems\\Capstone_Project\\outputs\\rag\\rag_chunks.parquet",
+        "C:\\Users\\alamr\\OneDrive\\Course\\MDE for AI Systems\\Capstone_Project\\outputs\\rag\\rag_search_results.json"
+      ]
+    },
+    "Deliverable 4": {
+      "name": "Orchestration",
+      "status": "completed",
+      "components": [
+        "Airflow-style DAG runner",
+        "Task dependencies",
+        "End-to-end DAG execution report",
+        "Reference Airflow DAG file"
+      ],
+      "tasks_executed_in_order": [
+        "task_1_ingestion",
+        "task_2_lakehouse_storage",
+        "task_3_rag_pipeline"
+      ],
+      "outputs": [
+        "C:\\Users\\alamr\\OneDrive\\Course\\MDE for AI Systems\\Capstone_Project\\outputs\\orchestration\\dag_run_report.json",
+        "C:\\Users\\alamr\\OneDrive\\Course\\MDE for AI Systems\\Capstone_Project\\dags\\customer_support_intelligence_dag.py"
+      ]
+    },
+    "Deliverable 5": {
+      "name": "Quality Gate and OpenLineage",
+      "status": "completed",
+      "components": [
+        "Great Expectations-style validation suite",
+        "Quality report",
+        "Failed records output",
+        "OpenLineage-style JSONL events"
+      ],
+      "outputs": [
+        "C:\\Users\\alamr\\OneDrive\\Course\\MDE for AI Systems\\Capstone_Project\\outputs\\quality\\great_expectations_suite.json",
+        "C:\\Users\\alamr\\OneDrive\\Course\\MDE for AI Systems\\Capstone_Project\\outputs\\quality\\quality_report.json",
+        "C:\\Users\\alamr\\OneDrive\\Course\\MDE for AI Systems\\Capstone_Project\\outputs\\quality\\failed_quality_records.parquet",
+        "C:\\Users\\alamr\\OneDrive\\Course\\MDE for AI Systems\\Capstone_Project\\outputs\\lineage\\openlineage_events.jsonl"
+      ]
+    }
+  }
+}
